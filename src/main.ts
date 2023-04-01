@@ -46,8 +46,8 @@ const animate = () => {
   x += speed * dx
   y += speed * dy
 
-  w.style.left = x + 'px'
-  w.style.top = y + 'px'
+  w.style.left = `${x}px`
+  w.style.top = `${y}px`
 
   window.requestAnimationFrame(animate)
 }
