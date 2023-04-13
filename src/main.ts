@@ -1,5 +1,7 @@
 import './style.css'
 
+import iconRaw from '../public/w.svg?raw'
+
 const speed = 2
 const colors = [
   '#00ff00',
@@ -12,11 +14,13 @@ const colors = [
 
 const favicon = document.querySelector<HTMLLinkElement>("link[rel~='icon']")
 
-const w = document.getElementById('w')
+const w = document.getElementById('w') as HTMLInputElement
 let x = document.body.clientWidth / 2
 let y = document.body.clientHeight / 2
 let dx = 1
 let dy = 1
+
+let prevColor: string
 
 const animate = () => {
   if (!w) return
@@ -53,25 +57,19 @@ const animate = () => {
 }
 
 const updateColor = (): void => {
-  if (!w) return
-
-  const prevColor = colorToHex(w.style.color)
   const newColor = colors[Math.floor(Math.random() * colors.length)]
   if (newColor === prevColor) return updateColor()
+  prevColor = newColor
 
-  w.style.color = newColor
+  const svgString = iconRaw.replace('#e124ff', newColor)
+  const imageSrc = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svgString)}`
 
-  if (favicon) {
-    favicon.href = `/${newColor.replace('#', '')}.svg`
+  if (w) {
+    w.src = imageSrc
   }
-}
-
-const colorToHex = (colorString: string) => {
-  const ctx = document.createElement('canvas').getContext('2d')
-  if (!ctx) return
-
-  ctx.fillStyle = colorString
-  return ctx.fillStyle
+  if (favicon) {
+    favicon.href = imageSrc
+  }
 }
 
 updateColor()
