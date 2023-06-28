@@ -2,7 +2,7 @@ import './style.css'
 
 import iconRaw from '../public/w.svg?raw'
 
-const speed = 2
+const speed = 20
 const colors = [
   '#00ff00',
   '#6a19ff',
@@ -30,20 +30,12 @@ const animate = () => {
   const screenWidth = document.body.clientWidth
   const screenHeight = document.body.clientHeight
 
-  if (x > screenWidth - wWidth) {
-    dx = -1
+  if (x < 0 || x > screenWidth - wWidth) {
+    dx *= -1
     updateColor()
   }
-  if (x < 0) {
-    dx = 1
-    updateColor()
-  }
-  if (y > screenHeight - wHeight) {
-    dy = -1
-    updateColor()
-  }
-  if (y < 0) {
-    dy = 1
+  if (y < 0 || y > screenHeight - wHeight) {
+    dy *= -1
     updateColor()
   }
 
@@ -52,8 +44,6 @@ const animate = () => {
 
   w.style.left = `${x}px`
   w.style.top = `${y}px`
-
-  window.requestAnimationFrame(animate)
 }
 
 const updateColor = (): void => {
@@ -73,4 +63,4 @@ const updateColor = (): void => {
 }
 
 updateColor()
-animate()
+setInterval(animate, 200)
