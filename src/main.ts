@@ -63,6 +63,25 @@ const updateColor = (): void => {
   }
 }
 
+window.onresize = () => {
+  if (!w) return
+
+  const screenWidth = document.body.clientWidth
+  const screenHeight = document.body.clientHeight
+  const wHalfWidth = w.clientWidth / 2
+  const wHalfHeight = w.clientHeight / 2
+
+  if (x > screenWidth - wHalfWidth) {
+    dx = -1
+    x = screenWidth - wHalfWidth
+  }
+
+  if (y > screenHeight - wHalfHeight) {
+    dy = -1
+    y = screenHeight - wHalfHeight
+  }
+}
+
 updateColor()
 
 // Add transition after the image is inserted to avoid animation glitch
