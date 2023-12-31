@@ -25,16 +25,17 @@ let prevColor: string
 const animate = () => {
   if (!w) return
 
-  const wWidth = w.clientWidth
-  const wHeight = w.clientHeight
   const screenWidth = document.body.clientWidth
   const screenHeight = document.body.clientHeight
+  const wHalfWidth = w.clientWidth / 2
+  const wHalfHeight = w.clientHeight / 2
 
-  if (x < 0 || x > screenWidth - wWidth) {
+  if (x < wHalfWidth || x > screenWidth - wHalfWidth) {
     dx *= -1
     updateColor()
   }
-  if (y < 0 || y > screenHeight - wHeight) {
+
+  if (y < wHalfHeight || y > screenHeight - wHalfHeight) {
     dy *= -1
     updateColor()
   }
@@ -63,4 +64,8 @@ const updateColor = (): void => {
 }
 
 updateColor()
+
+// Add transition after the image is inserted to avoid animation glitch
+w.style.transition = 'all 200ms linear'
+
 setInterval(animate, 200)

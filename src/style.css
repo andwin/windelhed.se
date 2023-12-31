@@ -18,7 +18,5 @@ body {
 #w {
   position: absolute;
   width: 100px;
-  left: 50%;
-  top: 50%;
-  transition:all 200ms linear;
+  transform: translate(-50%, -50%);
 }
