@@ -2,7 +2,7 @@ import './style.css'
 
 import iconRaw from '../public/w.svg?raw'
 
-const speed = 20
+const speed = 10
 const colors = [
   '#00ff00',
   '#6a19ff',
@@ -66,6 +66,6 @@ const updateColor = (): void => {
 updateColor()
 
 // Add transition after the image is inserted to avoid animation glitch
-w.style.transition = 'all 200ms linear'
+w.style.transition = 'all 100ms linear'
 
-setInterval(animate, 200)
+setInterval(animate, 100)
