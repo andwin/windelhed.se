@@ -27,10 +27,7 @@ let prevColor: string
 const animate = () => {
   if (!w) return
 
-  const screenWidth = document.body.clientWidth
-  const screenHeight = document.body.clientHeight
-  const wHalfWidth = w.clientWidth / 2
-  const wHalfHeight = w.clientHeight / 2
+  const { screenWidth, screenHeight, wHalfWidth, wHalfHeight } = getDimensions()
 
   if (x < wHalfWidth || x > screenWidth - wHalfWidth) {
     dx *= -1
@@ -65,13 +62,17 @@ const updateColor = (): void => {
   }
 }
 
+const getDimensions = () => ({
+  screenWidth: document.body.clientWidth,
+  screenHeight: document.body.clientHeight,
+  wHalfWidth: w.clientWidth / 2,
+  wHalfHeight: w.clientHeight / 2,
+})
+
 window.onresize = () => {
   if (!w) return
 
-  const screenWidth = document.body.clientWidth
-  const screenHeight = document.body.clientHeight
-  const wHalfWidth = w.clientWidth / 2
-  const wHalfHeight = w.clientHeight / 2
+  const { screenWidth, screenHeight, wHalfWidth, wHalfHeight } = getDimensions()
 
   if (x > screenWidth - wHalfWidth) {
     dx = -1
