@@ -8,6 +8,7 @@
 body {
   color-scheme: light dark;
   margin: 0;
+  overflow: hidden;
 }
 
 #app {
