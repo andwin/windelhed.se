@@ -12,7 +12,7 @@ const colors = [
   '#ff8800',
 ]
 
-const favicon = document.querySelector<HTMLLinkElement>("link[rel~='icon']")
+const favicon = document.querySelector<HTMLLinkElement>("link[rel~='icon']") as HTMLLinkElement
 
 const w = document.getElementById('w') as HTMLInputElement
 let x = document.body.clientWidth / 2
@@ -25,8 +25,6 @@ let dy = randomDirection()
 let prevColor: string
 
 const animate = () => {
-  if (!w) return
-
   const { screenWidth, screenHeight, wHalfWidth, wHalfHeight } = getDimensions()
 
   if (x < wHalfWidth || x > screenWidth - wHalfWidth) {
@@ -54,12 +52,8 @@ const updateColor = (): void => {
   const svgString = iconRaw.replace('#e124ff', newColor)
   const imageSrc = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svgString)}`
 
-  if (w) {
-    w.src = imageSrc
-  }
-  if (favicon) {
-    favicon.href = imageSrc
-  }
+  w.src = imageSrc
+  favicon.href = imageSrc
 }
 
 const getDimensions = () => ({
@@ -70,8 +64,6 @@ const getDimensions = () => ({
 })
 
 window.onresize = () => {
-  if (!w) return
-
   const { screenWidth, screenHeight, wHalfWidth, wHalfHeight } = getDimensions()
 
   if (x > screenWidth - wHalfWidth) {
