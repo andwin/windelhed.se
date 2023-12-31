@@ -17,8 +17,10 @@ const favicon = document.querySelector<HTMLLinkElement>("link[rel~='icon']")
 const w = document.getElementById('w') as HTMLInputElement
 let x = document.body.clientWidth / 2
 let y = document.body.clientHeight / 2
-let dx = 1
-let dy = 1
+
+const randomDirection = () => (Math.random() > 0.5 ? 1 : -1)
+let dx = randomDirection()
+let dy = randomDirection()
 
 let prevColor: string
 
