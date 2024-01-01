@@ -1,5 +1,6 @@
 import './style.css'
 
+import confetti from 'canvas-confetti'
 import iconRaw from '../public/w.svg?raw'
 
 const speed = 10
@@ -23,19 +24,27 @@ let dx = randomDirection()
 let dy = randomDirection()
 
 let prevColor: string
+let disableConfetti = false
+let enebleConfettiTimeout: number | null = null
 
 const animate = () => {
   const { screenWidth, screenHeight, wHalfWidth, wHalfHeight } = getDimensions()
 
+  let numberOfCollisions = 0
+
   if (x < wHalfWidth || x > screenWidth - wHalfWidth) {
+    numberOfCollisions++
     dx *= -1
     updateColor()
   }
 
   if (y < wHalfHeight || y > screenHeight - wHalfHeight) {
+    numberOfCollisions++
     dy *= -1
     updateColor()
   }
+
+  if (numberOfCollisions === 2) displayConfetti()
 
   x += speed * dx
   y += speed * dy
@@ -75,6 +84,21 @@ window.onresize = () => {
     dy = -1
     y = screenHeight - wHalfHeight
   }
+
+  // Disable confetti while resizing
+  disableConfetti = true
+  if (enebleConfettiTimeout) clearTimeout(enebleConfettiTimeout)
+  enebleConfettiTimeout = setTimeout(() => { disableConfetti = false }, 500)
+}
+
+const displayConfetti = () => {
+  if (disableConfetti) return
+
+  confetti({
+    particleCount: 100,
+    spread: 70,
+    origin: { y: 1 },
+  })
 }
 
 updateColor()
