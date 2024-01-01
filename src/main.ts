@@ -29,21 +29,19 @@ let enebleConfettiTimeout: number | null = null
 
 const animate = () => {
   const { screenWidth, screenHeight, wHalfWidth, wHalfHeight } = getDimensions()
-
   let numberOfCollisions = 0
 
   if (x < wHalfWidth || x > screenWidth - wHalfWidth) {
     numberOfCollisions++
     dx *= -1
-    updateColor()
   }
 
   if (y < wHalfHeight || y > screenHeight - wHalfHeight) {
     numberOfCollisions++
     dy *= -1
-    updateColor()
   }
 
+  if (numberOfCollisions > 0) updateColor()
   if (numberOfCollisions === 2) displayConfetti()
 
   x += speed * dx
