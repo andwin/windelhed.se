@@ -3,7 +3,7 @@ import './style.css'
 import confetti from 'canvas-confetti'
 import iconRaw from '../public/w.svg?raw'
 
-const speed = 10
+const speed = 5
 const colors = [
   '#00ff00',
   '#6a19ff',
@@ -105,4 +105,4 @@ const displayConfetti = () => {
 
 updateColor()
 
-setInterval(animate, 100)
+setInterval(animate, 50)
