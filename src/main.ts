@@ -3,8 +3,8 @@ import './style.css'
 import confetti from 'canvas-confetti'
 import iconRaw from '../public/w.svg?raw'
 
-const speed = 5
-const animationInterval = 50
+const speed = 10
+const animationInterval = 100
 const colors = [
   '#00ff00',
   '#6a19ff',
