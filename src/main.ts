@@ -15,9 +15,13 @@ const colors = [
 
 const favicon = document.querySelector<HTMLLinkElement>("link[rel~='icon']") as HTMLLinkElement
 
-const w = document.getElementById('w') as HTMLInputElement
 let x = document.body.clientWidth / 2
 let y = document.body.clientHeight / 2
+
+const w = document.getElementById('w') as HTMLInputElement
+
+// Add transition after the image is inserted to avoid animation glitch
+w.style.transition = 'all 100ms linear'
 
 const randomDirection = () => (Math.random() > 0.5 ? 1 : -1)
 let dx = randomDirection()
@@ -100,8 +104,5 @@ const displayConfetti = () => {
 }
 
 updateColor()
-
-// Add transition after the image is inserted to avoid animation glitch
-w.style.transition = 'all 100ms linear'
 
 setInterval(animate, 100)
