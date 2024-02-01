@@ -17,8 +17,8 @@ const colors = [
 const favicon = document.querySelector<HTMLLinkElement>("link[rel~='icon']") as HTMLLinkElement
 
 const w = document.getElementById('w') as HTMLInputElement
-let x = document.body.clientWidth / 2
-let y = document.body.clientHeight / 2
+let x: number
+let y: number
 
 const randomDirection = () => (Math.random() > 0.5 ? 1 : -1)
 let dx = randomDirection()
@@ -107,5 +107,8 @@ animate()
 w.style.transition = 'all 100ms linear'
 
 setTimeout(() => {
+  x = document.body.clientWidth / 2
+  y = document.body.clientHeight / 2
+
   setInterval(animate, animationInterval)
 }, 500)
