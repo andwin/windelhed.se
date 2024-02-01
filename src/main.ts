@@ -102,12 +102,14 @@ const displayConfetti = () => {
 
 updateColor()
 
-// Add transition after the image is inserted to avoid animation glitch
-w.style.transition = 'all 100ms linear'
-
 setTimeout(() => {
   x = document.body.clientWidth / 2
   y = document.body.clientHeight / 2
+
+  animate()
+
+  // Add transition after the image is inserted to avoid animation glitch
+  w.style.transition = 'all 100ms linear'
 
   setInterval(animate, animationInterval)
 }, 100)
