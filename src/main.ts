@@ -108,4 +108,4 @@ w.style.transition = 'all 100ms linear'
 
 setTimeout(() => {
   setInterval(animate, animationInterval)
-}, 100)
+}, 500)
