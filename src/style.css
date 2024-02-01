@@ -11,12 +11,13 @@ body {
 }
 
 #app {
-  background-color: rebeccapurple;
   width: 100vw;
   height: 100vh;
 }
 
 #w {
+  left: 50%;
+  top: 50%;
   position: absolute;
   width: 100px;
   transform: translate(-50%, -50%);
