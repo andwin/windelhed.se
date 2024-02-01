@@ -1,8 +1,8 @@
 import confetti from 'canvas-confetti'
 import iconRaw from '../public/w.svg?raw'
 
-const speed = 10
-const animationInterval = 100
+const speed = 1
+const animationInterval = 10
 const colors = [
   '#00ff00',
   '#6a19ff',
@@ -103,11 +103,6 @@ updateColor()
 setTimeout(() => {
   x = document.body.clientWidth / 2
   y = document.body.clientHeight / 2
-
-  animate()
-
-  // Add transition after the image is inserted to avoid animation glitch
-  w.style.transition = 'all 100ms linear'
 
   setInterval(animate, animationInterval)
 }, 100)
