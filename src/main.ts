@@ -1,5 +1,3 @@
-import './style.css'
-
 import confetti from 'canvas-confetti'
 import iconRaw from '../public/w.svg?raw'
 
